@@ -1,2 +1,2 @@
-# BackEend_2A_group
+# BackEend 2A Group
 BackEnd con los servicios de autenticación para módulos de administración usuarios, roles y permisos.

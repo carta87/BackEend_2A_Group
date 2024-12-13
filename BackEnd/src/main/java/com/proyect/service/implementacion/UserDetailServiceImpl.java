@@ -31,7 +31,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
                                 new SimpleGrantedAuthority("ROLE_".concat(roleEntity.getRoleEnum().name()))));
 
         userEntity.getRoles().stream()
-                .flatMap(roleEntity ->roleEntity.getPermissionList().stream())
+                .flatMap(roleEntity ->roleEntity.getProfileList().stream())
                 .forEach(permissionEntity -> authorities.add(new SimpleGrantedAuthority(permissionEntity.getName())));
 
         return new User(userEntity.getUsername(),

@@ -59,7 +59,7 @@ public class AuthService implements IAuthService {
                 .orElseGet(() -> {
                     RoleEntity newRole = RoleEntity.builder()
                             .roleEnum(RoleEnum.USER)
-                            .permissionList(new HashSet<>(Set.of(readPermission)))
+                            .profileList(new HashSet<>(Set.of(readPermission)))
                             .build();
                     return iRoleRepository.save(newRole);
                 });

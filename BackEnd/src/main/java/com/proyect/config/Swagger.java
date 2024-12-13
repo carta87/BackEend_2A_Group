@@ -13,8 +13,8 @@ import org.springframework.http.HttpHeaders;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "MICRO-SERVICE AUTH",
-                description = "Alista los diferentes servios de login, registro, test",
+                title = "Módulo de administración y autenticación de usuarios.",
+                description = "Alista los diferentes servios de login JWT y CRUD de usuarios.",
                 version = "1.0.0",
                 contact = @Contact(
                         name = "Carlos Tafur",

@@ -27,17 +27,17 @@ public class RoleEntity {
     @JoinTable(name = "role_permissions",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private Set<ProfileEntity> permissionList = new HashSet<>();
+    private Set<ProfileEntity> profileList = new HashSet<>();
 
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof RoleEntity that)) return false;
-        return Objects.equals(id, that.id) && roleEnum == that.roleEnum && Objects.equals(permissionList, that.permissionList);
+        return Objects.equals(id, that.id) && roleEnum == that.roleEnum && Objects.equals(profileList, that.profileList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleEnum, permissionList);
+        return Objects.hash(id, roleEnum, profileList);
     }
 }

@@ -1,0 +1,29 @@
+server:
+  port: 8092
+
+jw:
+  secret:
+    key: 586E3272357538782F413F4428472B4B6250655368566B597033733676397924
+  time:
+    expiration: 3600000 # Una hora
+
+spring:
+  application:
+    name: proyect
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=proyecto_db2;trustServerCertificate=true;
+    username: admin
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: sqlserver
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
+springdoc:
+  version: '@springdoc.version@'
+  api-docs:
+    version: openapi_3_1
+  cache:
+    disabled: true

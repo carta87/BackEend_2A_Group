@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         userEntity.getRoles()
                 .forEach(roleEntity ->
                         authorities.add(
-                                new SimpleGrantedAuthority("ROLE_".concat(roleEntity.getRoleEnum().name()))));
+                                new SimpleGrantedAuthority("ROLE_".concat(roleEntity.getName()))));
 
         userEntity.getRoles().stream()
                 .flatMap(roleEntity ->roleEntity.getProfileList().stream())

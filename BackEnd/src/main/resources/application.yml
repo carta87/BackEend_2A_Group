@@ -12,7 +12,7 @@ spring:
     name: proyect
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;databaseName=proyecto_db2;trustServerCertificate=true;
+    url: jdbc:sqlserver://localhost:1433;databaseName=proyecto_db;trustServerCertificate=true;
     username: admin
     password: root
   jpa:

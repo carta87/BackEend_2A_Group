@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface IPermissionRepository extends CrudRepository<ProfileEntity, Long> {
+public interface IProfileRepository extends CrudRepository<ProfileEntity, Long> {
     Optional<ProfileEntity> findByName(String name);
 }

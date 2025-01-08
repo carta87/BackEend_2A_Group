@@ -2,14 +2,13 @@ package com.proyect.config;
 
 import com.proyect.jpa.entity.ProfileEntity;
 import com.proyect.jpa.entity.RoleEntity;
-import com.proyect.jpa.entity.RoleEnum;
 import com.proyect.jpa.entity.UserEntity;
 import com.proyect.jpa.repository.IUserRepository;
+import com.proyect.util.Constantes;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.Set;
 
@@ -26,29 +25,35 @@ public class ChargeData {
         if(entityList.isEmpty()){
             /* Create PERMISSIONS */
             ProfileEntity createPermission = ProfileEntity.builder()
-                    .name("CREATE")
+                    .name(Constantes.CREATE)
+                    .enabled(Boolean.TRUE)
                     .build();
 
             ProfileEntity readPermission = ProfileEntity.builder()
-                    .name("READ")
+                    .name(Constantes.READ)
+                    .enabled(Boolean.TRUE)
                     .build();
 
             ProfileEntity updatePermission = ProfileEntity.builder()
-                    .name("UPDATE")
+                    .name(Constantes.UPDATE)
+                    .enabled(Boolean.TRUE)
                     .build();
 
             ProfileEntity deletePermission = ProfileEntity.builder()
-                    .name("DELETE")
+                    .name(Constantes.DELETE)
+                    .enabled(Boolean.TRUE)
                     .build();
 
             /* Create ROLES */
             RoleEntity roleAdmin = RoleEntity.builder()
-                    .roleEnum(RoleEnum.ADMIN)
+                    .name(Constantes.ADMIN)
+                    .enabled(Boolean.TRUE)
                     .profileList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
                     .build();
 
             RoleEntity roleUser = RoleEntity.builder()
-                    .roleEnum(RoleEnum.USER)
+                    .name(Constantes.USER)
+                    .enabled(Boolean.TRUE)
                     .profileList(Set.of(createPermission, readPermission))
                     .build();
 
@@ -57,7 +62,7 @@ public class ChargeData {
                     .username("admin")
                     .email("admin@hotmail.com")
                     .password(passwordEncoder.encode("admin"))
-                    .isEnable(Boolean.TRUE)
+                    .enable(Boolean.TRUE)
                     .accountNoExpired(Boolean.TRUE)
                     .accountNoLocked(Boolean.TRUE)
                     .credentialNoExpired(Boolean.TRUE)
@@ -68,7 +73,7 @@ public class ChargeData {
                     .username("user")
                     .email("user@hotmail.com")
                     .password(passwordEncoder.encode("user"))
-                    .isEnable(Boolean.TRUE)
+                    .enable(Boolean.TRUE)
                     .accountNoExpired(Boolean.TRUE)
                     .accountNoLocked(Boolean.TRUE)
                     .credentialNoExpired(Boolean.TRUE)
@@ -79,7 +84,7 @@ public class ChargeData {
                     .username("carlos")
                     .email("carlos@hotmail.com")
                     .password(passwordEncoder.encode("1234"))
-                    .isEnable(Boolean.TRUE)
+                    .enable(Boolean.TRUE)
                     .accountNoExpired(Boolean.TRUE)
                     .accountNoLocked(Boolean.TRUE)
                     .credentialNoExpired(Boolean.TRUE)

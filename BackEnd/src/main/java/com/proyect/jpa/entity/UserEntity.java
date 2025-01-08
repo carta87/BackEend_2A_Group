@@ -1,8 +1,13 @@
 package com.proyect.jpa.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +21,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class UserEntity  {
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +38,15 @@ public class UserEntity  {
 
     private String country;
 
-    @Email
     private String email;
 
     private String password;
 
-    @Column(name = "is_enable")
-    private boolean isEnable;
+    private boolean enable;
+
+    private LocalDateTime fechaCreacion;
+
+    private LocalDateTime fechaActualizacion;
 
     @Column(name = "account_no_expired")
     private boolean accountNoExpired;
@@ -55,4 +62,21 @@ public class UserEntity  {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles = new HashSet<>();
+
+
+    public void setFechaCreacion(Date date) {
+        // Convertir Date a LocalDateTime
+        this.fechaCreacion = date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+    }
+
+
+    public void setFechaActualizacion(Date date) {
+        // Convertir Date a LocalDateTime
+        this.fechaActualizacion = date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+    }
+
 }

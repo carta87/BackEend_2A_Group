@@ -2,6 +2,7 @@ package com.proyect.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Builder
@@ -11,7 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "profile")
-public class ProfileEntity {
+public class ProfileEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +21,17 @@ public class ProfileEntity {
     @Column(unique = true, nullable = false, updatable = false)
     private String name;
 
+    private boolean enabled;
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof ProfileEntity that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return enabled == that.enabled && Objects.equals(id, that.id) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, enabled);
     }
 }
